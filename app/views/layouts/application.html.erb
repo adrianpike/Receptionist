@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Receptionist</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+	<div id="header">
+		<div id="header-content">
+			<h1>Receptionist</h1>
+			
+			<% if current_user then %>
+				Welcome back, <%=link_to (current_user ? current_user.email : 'you!'), user_path %>.
+				<%=link_to 'Sign Out', destroy_user_session_path %>
+			<% else %>
+				<%=link_to 'Create Account', new_user_registration_path %> |
+				<%=link_to 'Sign In', new_user_session_path %>
+			<% end %>
+		</div>
+	</div>
+	
+	<div id="body">
+		<%= yield %>
+	</div>
+
+</body>
+</html>

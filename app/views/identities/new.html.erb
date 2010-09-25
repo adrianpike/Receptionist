@@ -1,0 +1,23 @@
+<ul>
+
+<% form_for @identity do |f| %>
+	
+	<li>
+		<%= f.label :name%>
+		<%= f.text_field :name %>
+	</li>
+	
+	<li>
+		<%=f.label :type%>
+		<%= f.select :type, {'Touchatag' => 'Identity::Touchatag'} %>
+	</li>
+	
+	<li>
+		<%=f.label :key %>
+		<%=f.text_field :data %>
+	</li>
+	
+	<%= f.submit%>
+<% end %>
+
+</ul>

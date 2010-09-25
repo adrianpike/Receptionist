@@ -1,0 +1,10 @@
+<h1>About Me</h1>
+
+<h2>My Accounts</h2>
+
+<ul>
+	<% @user.identities.each {|a| %>
+		<li><%=link_to a.name, a%></li>
+	<% } %>
+	<li><%=link_to 'Register Identity', new_identity_path %></li>
+</ul>

@@ -1,0 +1,27 @@
+body {
+   margin:0px;
+   padding:0px;
+   font-family:'Verdana',sans-serif;
+   background-color:#f8f8f8;
+   color:#222;
+}
+
+#header {
+   background-color:#6af;
+   border-bottom:1px solid #aaf;
+   color:#222;
+}
+
+#header-content {
+   width:960px;
+   margin:0px auto;
+}
+
+#header h1 {
+   margin:0px;
+}
+
+#body {
+   width:960px;
+   margin:0px auto;
+}
