@@ -29,3 +29,7 @@ gem 'unicorn'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+
+gem 'nfc'
+gem 'formtastic', '~> 1.1.0'

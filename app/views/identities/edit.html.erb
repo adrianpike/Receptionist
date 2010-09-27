@@ -1,0 +1,23 @@
+<ul>
+
+<% form_for @identity.becomes(Identity) do |f| %>
+	
+	<li>
+		<%= f.label :name%>
+		<%= f.text_field :name %>
+	</li>
+	
+	<li>
+		<%=f.label :type%>
+		<strong><%=@identity.type%></strong>
+	</li>
+	
+	<li>
+		<%=f.label :key %>
+		<%=f.text_field :data %>
+	</li>
+	
+	<%= f.submit%>
+<% end %>
+
+</ul>

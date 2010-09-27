@@ -1,0 +1,28 @@
+<ul>
+
+<% form_for @resource do |f| %>
+	
+	<li>
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</li>
+	
+	<li>
+		<%=f.label :description %>
+		<%= f.text_field :description %>
+	</li>
+	
+	<li>
+		<%=f.label :is_guarded %>
+		<%=f.check_box :is_guarded%>
+	</li>
+	
+	<li>
+		<%=f.label :utilization_code %>
+		<%=f.text_area :utilization_code %>
+	</li>
+	
+	<%= f.submit %>
+<% end %>
+
+</ul>

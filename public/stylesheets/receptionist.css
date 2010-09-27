@@ -2,15 +2,17 @@ body {
    margin:0px;
    padding:0px;
    font-family:'Verdana',sans-serif;
-   background-color:#f8f8f8;
+   background-color:#ebebeb;
    color:#222;
 }
 
 #header {
-   background-color:#6af;
-   border-bottom:1px solid #aaf;
+   background-color:#77b5cf;
+   border-bottom:1px solid #67a5bf;
    color:#222;
+   padding-bottom:10px;
 }
+
 
 #header-content {
    width:960px;

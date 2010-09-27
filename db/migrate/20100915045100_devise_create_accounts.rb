@@ -6,6 +6,11 @@ class DeviseCreateAccounts < ActiveRecord::Migration
 			t.string :type
 			t.string :name
 			
+			t.integer :authorizations_count, :default => 0
+			t.integer :rejections_count, :default => 0
+			
+			t.datetime :last_authorization_at
+			
 			t.text	 :data
 			
       t.timestamps

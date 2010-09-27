@@ -1,0 +1,8 @@
+<h2>Resources</h2>
+
+<ul>
+	<% @resources.each {|r| %>
+		<li><%= link_to r.name,r %></li>
+	<% } %>
+	<li><%= link_to 'New Resource', new_resource_path %></li>
+</ul>

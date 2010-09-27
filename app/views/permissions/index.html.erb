@@ -1,0 +1,6 @@
+<ul>
+<% @permissions.each {|p| %>
+	<li><%=link_to p.to_s, p %>
+<% } %>
+	<li><%=link_to 'New Permission', new_permission_path %></li>
+</ul>

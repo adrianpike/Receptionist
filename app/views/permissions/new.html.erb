@@ -1,0 +1,16 @@
+<ul>
+
+
+<% semantic_form_for @permission do |f| %>
+
+	<%=f.input :resource %>
+	
+	<%=f.input :identity_id, :as => :select, :collection => (Identity.all) %>
+	<%=f.input :user_id, :as => :select, :collection => (User.all) %>
+	<%=f.input :organization_id, :as => :select, :collection => (Organization.all) %>
+	
+	<%=f.buttons%>
+
+<% end %>
+
+</ul>

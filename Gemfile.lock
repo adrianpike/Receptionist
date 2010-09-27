@@ -42,12 +42,17 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    formtastic (1.1.0)
+      actionpack (>= 2.3.0)
+      activesupport (>= 2.3.0)
+      i18n (>= 0.4.0)
     i18n (0.4.1)
     mail (2.2.5)
       activesupport (>= 2.3.6)
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
+    nfc (2.0.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -83,6 +88,8 @@ PLATFORMS
 
 DEPENDENCIES
   devise!
+  formtastic (~> 1.1.0)
+  nfc
   rails (= 3.0.0)
   sqlite3-ruby
   unicorn

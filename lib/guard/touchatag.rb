@@ -4,29 +4,34 @@ module Guard
 
 	class Touchatag
 		
-		def initialize(resource = nil)
+		def initialize(resource)
 			@resource = resource
 		end
 	
 		def patrol
-			last_uid = nil
-
 			while 1 do
-				NFC.instance.find do |tag|
-					if last_uid != tag.uid then
-						printf "[GUARD] -- Authentication Request for #{tag.uid}\n"
-						# TODO: make this modular
-						if account = AccountTouchatag.find_by_uid(tag.uid) then
-							if @resource then
-								# ensure that account can utilize the resource
+				instance = NFC.instance
+				printf "[GUARD] -- Patrolling.\n"
+				tag = NFC.instance.find
+				unless tag.to_s.blank? then
+					printf "[GUARD] -- Authentication Request for '#{tag.to_s}'\n"
+					if identity = Identity::Touchatag.find_by_data(tag.to_s.downcase) then
+						if @resource then
+							@resource.reload
+							if @resource.can_utilize?(identity) then
+								printf "[GUARD] -- Utilization of #{@resource} approved.\n"
+								identity.utilized_resource!(@resource)
+								@resource.utilize!(identity)
 							else
-								# unlock the door
+								printf "[GUARD] -- Utilization of #{@resource} *REJECTED*.\n"
+								identity.rejected_resource!(@resource)
 							end
-						else
-							# reject 'em
 						end
+					else
+						printf "[GUARD] -- Unknown Identity.\n"
 					end
 				end
+				sleep 1
 			end
 		end
 	
