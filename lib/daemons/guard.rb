@@ -16,6 +16,7 @@ while($running) do
   threads = []
 
 	Resource.need_guarding.each {|r|
+		p "Guarding #{r.name}"
 		t = Thread.new do
 			Guard::Touchatag.new(r).patrol # FIXME
 		end

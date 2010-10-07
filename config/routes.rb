@@ -9,7 +9,11 @@ Receptionist::Application.routes.draw do
 
 	resource :user
 
-  resources :resources
+  resources :resources do |r|
+		member do
+			get :utilize
+		end
+	end
 
 	root :to => "receptionist#index"
 end
