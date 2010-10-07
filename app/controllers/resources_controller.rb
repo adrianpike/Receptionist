@@ -20,6 +20,13 @@ class ResourcesController < ApplicationController
 	def update
 		@resource = Resource.find(params[:id])
 		@resource.update_attributes(params[:resource])
+		redirect_to resource_path(@resource)
+	end
+	
+	def utilize
+		@resource.utilize!(current_user)
+		
+		redirect_to resource_path(@resource)
 	end
 	
 end

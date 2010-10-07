@@ -11,27 +11,26 @@ module Guard
 		def patrol
 			while 1 do
 				instance = NFC.instance
-				printf "[GUARD] -- Patrolling.\n"
-				tag = NFC.instance.find
-				unless tag.to_s.blank? then
-					printf "[GUARD] -- Authentication Request for '#{tag.to_s}'\n"
+				Rails.logger.info("[GUARD] -- Patrolling.\n")
+				tag = NFC.instance.find do |tag|
+					Rails.logger.info("[GUARD] -- Authentication Request for '#{tag.to_s}'\n")
 					if identity = Identity::Touchatag.find_by_data(tag.to_s.downcase) then
 						if @resource then
 							@resource.reload
 							if @resource.can_utilize?(identity) then
-								printf "[GUARD] -- Utilization of #{@resource} approved.\n"
+								Rails.logger.info("[GUARD] -- Utilization of #{@resource} approved.\n")
 								identity.utilized_resource!(@resource)
 								@resource.utilize!(identity)
 							else
-								printf "[GUARD] -- Utilization of #{@resource} *REJECTED*.\n"
+								Rails.logger.info("[GUARD] -- Utilization of #{@resource} *REJECTED*.\n")
 								identity.rejected_resource!(@resource)
 							end
 						end
 					else
-						printf "[GUARD] -- Unknown Identity.\n"
+						Rails.logger.info("[GUARD] -- Unknown Identity.\n")
 					end
+					sleep 5
 				end
-				sleep 1
 			end
 		end
 	

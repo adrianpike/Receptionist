@@ -40,6 +40,7 @@ GEM
       activesupport (~> 3.0.0)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
+    daemons (1.0.10)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     formtastic (1.1.0)
@@ -87,6 +88,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  daemons
   devise!
   formtastic (~> 1.1.0)
   nfc

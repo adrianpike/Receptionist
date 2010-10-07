@@ -1,1 +1,5 @@
-idealab.
+<ul>
+<% @utilizations.each {|u| %>
+	<li><%=u.identity.user%> @ <%=u.resource.name%> - <%=time_ago_in_words(u.created_at)%></li>
+<% } %>
+</ul>

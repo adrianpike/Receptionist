@@ -33,4 +33,5 @@ gem 'unicorn'
 
 gem 'nfc'
 gem 'formtastic', '~> 1.1.0'
-gem 'oauth2'
+#gem 'oauth2'
+gem 'daemons'
