@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Receptionist::Application.config.session_store :cookie_store, :key => '_receptionist_session'
+Receptionist::Application.config.session_store :cookie_store, :key => '_das_receptionist_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
