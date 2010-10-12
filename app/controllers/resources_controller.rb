@@ -24,9 +24,19 @@ class ResourcesController < ApplicationController
 	end
 	
 	def utilize
-		@resource.utilize!(current_user)
-		
-		redirect_to resource_path(@resource)
+		@identity = Identity.find(:first, :conditions => {:data => params[:key].to_s.downcase, :type => params[:type]})
+		if @identity then
+			@resource = Resource.find(params[:id])
+			if @resource and @resource.can_utilize?(@identity) then
+				@identity.utilized_resource!(@resource)
+				@resource.utilize!(@identity)
+				render :text => 'Utilization approved.'
+			else
+				render :text => 'Unauthorized.'
+			end
+		else
+			render :text => 'No Identity.'
+		end
 	end
 	
 end
