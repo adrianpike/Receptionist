@@ -23,7 +23,9 @@
 <h2>My Permissions</h2>
 
 <ul>
-	<% @user.permissions.each {|p| %>
+	<% @user.permissions.each {|p| 
+		next unless p.resource
+		%>
 		<li><%=link_to p.resource.name, p.resource %></li>
 	<% } %>
 </ul>

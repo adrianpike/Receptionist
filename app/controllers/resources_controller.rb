@@ -24,7 +24,11 @@ class ResourcesController < ApplicationController
 	end
 	
 	def utilize
-		@identity = Identity.find(:first, :conditions => {:data => params[:key].to_s.downcase, :type => params[:type]})
+		if params[:key] then
+			@identity = Identity.find(:first, :conditions => {:data => params[:key].to_s.downcase, :type => params[:type]})
+		elsif current_user then
+			@identity = current_user.identities.first
+		end
 		if @identity then
 			@resource = Resource.find(params[:id])
 			if @resource and @resource.can_utilize?(@identity) then

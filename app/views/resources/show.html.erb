@@ -1,5 +1,12 @@
-<%=render :partial => 'form' %>
+<h1><%=@resource.name%></h1>
 
-<h4>Permissions</h4>
+<% if @resource.can_utilize?(current_user.identities.first) then %>
+You <strong>can</strong> utilize this resource. <%=link_to 'Utilize it!', utilize_resource_path(@resource)%>
+<% end %>
 
-<%=link_to 'New Permission', new_permission_path(:resource_id => 1) %>
+<% if current_user.admin then %>
+	<%=render :partial => 'form' %>
+
+	<h4>Permissions</h4>
+	<%=link_to 'New Permission', new_permission_path(:resource_id => @resource.id) %>
+<% end %>
