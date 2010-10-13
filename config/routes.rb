@@ -9,6 +9,8 @@ Receptionist::Application.routes.draw do
 
 	resource :user
 
+	resources :utilizations
+
   resources :resources do |r|
 		member do
 			get :utilize

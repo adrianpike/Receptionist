@@ -1,9 +1,15 @@
 <h1>About Me</h1>
 
+<%=image_tag @user.avatar.url(:small) %>
+
 <ul>
 	<li><strong>Name</strong> <%=@user.name%></li>
 	<li><strong>Email</strong> <%=@user.email%></li>
 </ul>
+
+<%=link_to 'Edit My Details', edit_user_path %>
+
+<%=link_to 'Change My Password', edit_user_registration_path %>
 
 <h2>My Accounts</h2>
 
@@ -12,4 +18,12 @@
 		<li><%=link_to a.name, a.becomes(Identity)%></li>
 	<% } %>
 	<li><%=link_to 'Register Identity', new_identity_path %></li>
+</ul>
+
+<h2>My Permissions</h2>
+
+<ul>
+	<% @user.permissions.each {|p| %>
+		<li><%=link_to p.resource.name, p.resource %></li>
+	<% } %>
 </ul>

@@ -29,7 +29,7 @@ class ResourcesController < ApplicationController
 			@resource = Resource.find(params[:id])
 			if @resource and @resource.can_utilize?(@identity) then
 				@identity.utilized_resource!(@resource)
-				@resource.utilize!(@identity)
+				@resource.utilize!
 				render :text => 'Utilization approved.'
 			else
 				render :text => 'Unauthorized.'

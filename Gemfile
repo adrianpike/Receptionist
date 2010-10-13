@@ -6,7 +6,7 @@ gem 'rails', '3.0.0'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
+gem 'devise'
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -35,3 +35,4 @@ gem 'nfc'
 gem 'formtastic', '~> 1.1.0'
 #gem 'oauth2'
 gem 'daemons'
+gem 'paperclip'

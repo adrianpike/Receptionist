@@ -1,0 +1,3 @@
+<li>
+<%=image_tag utilization.identity.user.avatar.url(:small), :class => 'small-user-avatar', :alt => utilization.identity.user %>
+<%=utilization.identity.user%> @ <%=utilization.resource.name%> - <%=time_ago_in_words(utilization.created_at)%> ago</li>

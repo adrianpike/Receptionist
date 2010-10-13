@@ -1,5 +1,24 @@
-<ul>
-<% @utilizations.each {|u| %>
-	<li><%=u.identity.user%> @ <%=u.resource.name%> - <%=time_ago_in_words(u.created_at)%></li>
-<% } %>
+<ul id="recent-activity">
 </ul>
+
+<% content_for :head do %>
+	<script type="text/javascript">
+	
+		function reload_activity() {
+			$.ajax({
+				url: <%=utilizations_path.to_json.html_safe%>,
+				success: function(data) {
+					$('#recent-activity').html(data);
+				}
+			});
+
+			setTimeout(function() {
+				reload_activity();
+			}, 10000);
+		}
+	
+		$(function() {
+			reload_activity();
+		});
+	</script>
+<% end %>

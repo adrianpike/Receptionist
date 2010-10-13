@@ -15,7 +15,7 @@ class Resource < ActiveRecord::Base
 		# need to check if that user has permissions
 	end
 	
-	def utilize!(identity)
+	def utilize!(identity = nil)
 		eval(utilization_code) # TODO: sandbox this
 	end
 	
