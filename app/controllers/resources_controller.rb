@@ -25,7 +25,7 @@ class ResourcesController < ApplicationController
 	
 	def utilize
 		if params[:key] then
-			@identity = Identity.find(:first, :conditions => {:data => params[:key].to_s.downcase, :type => params[:type]})
+			@identity = Identity.find(:first, :conditions => ['type = ? and LOWER(data) = ?', params[:type], params[:key].to_s.downcase])
 		elsif current_user then
 			@identity = current_user.identities.first
 		end

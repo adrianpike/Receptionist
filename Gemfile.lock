@@ -48,8 +48,9 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    nfc (2.0.1)
-    paperclip (2.3.1.1)
+    paperclip (2.3.4)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -87,7 +88,6 @@ DEPENDENCIES
   daemons
   devise
   formtastic (~> 1.1.0)
-  nfc
   paperclip
   rails (= 3.0.0)
   sqlite3-ruby
