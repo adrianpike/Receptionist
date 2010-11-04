@@ -76,8 +76,6 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    unicorn (0.97.0)
-      rack
     warden (0.10.7)
       rack (>= 1.0.0)
 
@@ -91,4 +89,3 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.0)
   sqlite3-ruby
-  unicorn

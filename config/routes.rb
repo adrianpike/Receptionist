@@ -17,5 +17,5 @@ Receptionist::Application.routes.draw do
 		end
 	end
 
-	root :to => "receptionist#index"
+	root :to => "utilizations#index"
 end

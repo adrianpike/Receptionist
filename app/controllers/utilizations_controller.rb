@@ -4,10 +4,12 @@ class UtilizationsController < ApplicationController
 		@utilizations = Utilization.all(:limit=>10, :order =>'created_at desc')
 		
 		respond_to do |format|
-			format.html {
+			format.js {
 				render :partial => 'utilization', :collection => @utilizations
 			}
-			format.js {
+			format.html {
+			}
+			format.json {
 				render :text => @utilizations.to_json(
 				:only => [:created_at],
 				:include => {:resource => {

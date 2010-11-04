@@ -7,7 +7,7 @@ class Resource < ActiveRecord::Base
 	has_many :users, :through => :permissions
 	
 	named_scope :need_guarding, :conditions => {'is_guarded' => true}
-	
+		
 	def can_utilize?(identity)
 		u = identity.user
 		# need to check if a user is in an organization that has permission
