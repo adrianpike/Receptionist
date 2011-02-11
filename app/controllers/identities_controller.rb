@@ -18,11 +18,12 @@ class IdentitiesController < ApplicationController
 	  case params[:identity][:type]
 	  when "Identity::QR"
 	    @identity = Identity::QR.new(params[:identity])
+    when "Identity::Touchatag"
+      @identity = Identity::Touchatag.new(params[:identity])
 	  else
 		  @identity = Identity.new(params[:identity])
 		end
 		@identity.user = current_user
-		# @identity.type = params[:identity][:type]
 		@identity.save
 		
 		redirect_to user_path
