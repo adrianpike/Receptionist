@@ -21,7 +21,7 @@
 
 			<div class="user-info">
 				<% if current_user then %>
-					Welcome back, <%=link_to (current_user ? current_user.email : 'you!'), user_path %>.
+					Welcome back, <strong><%=link_to current_user.to_s, user_path %>.</strong>
 					<%=link_to 'Sign Out', destroy_user_session_path %>
 				<% else %>
 					<%=link_to 'Create Account', new_user_registration_path %> |
@@ -30,6 +30,11 @@
 			</div>
 			<br class="clear" />
 		</div>
+	</div>
+	<div id="flashes">
+		<% if flash[:notice] then %><p class="notice"><%=flash[:notice]%></p><% end %>
+		<% if flash[:alert] then %><p class="alert"><%=flash[:alert]%></p><% end %>
+		<% if flash[:error] then %><p class="error"><%=flash[:error]%></p><% end %>
 	</div>
 	<div id="body">
 		<%= yield %>

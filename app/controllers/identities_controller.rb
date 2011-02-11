@@ -14,9 +14,15 @@ class IdentitiesController < ApplicationController
 	end
 	
 	def create
-		@identity = Identity.new(params[:identity])
+	  # TODO: refactor
+	  case params[:identity][:type]
+	  when "Identity::QR"
+	    @identity = Identity::QR.new(params[:identity])
+	  else
+		  @identity = Identity.new(params[:identity])
+		end
 		@identity.user = current_user
-		@identity.type = params[:identity][:type]
+		# @identity.type = params[:identity][:type]
 		@identity.save
 		
 		redirect_to user_path

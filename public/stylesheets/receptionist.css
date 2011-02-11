@@ -10,7 +10,7 @@ body {
    background-color:#77b5cf;
    border-bottom:1px solid #67a5bf;
    color:#222;
-   padding-bottom:10px;
+   padding:10px 0px 12px;
 }
 
 
@@ -23,15 +23,43 @@ body {
    margin:0px;
 }
 
+#header h1 a {
+   color:#333;
+   text-shadow:0px -1px 0px #ccc;
+}
+
 #body {
    width:960px;
    margin:0px auto;
 }
 
+#flashes {
+	width:960px;
+	margin:0px auto;
+}
+
+#flashes p {
+	background-color:#e6e6e6;
+	border:1px solid #ccc;
+	-webkit-box-shadow: #fff 1px 1px 0px;
+	padding:10px;
+	border-radius:5px;
+}
+
+#flashes .notice {
+}
+#flashes .error {
+}
+#flashes .alert {
+}
+
+
 #navbar {
    background-color:#ccc;
    padding:5px;
    color:#333;
+   border-bottom:1px solid #aaa;
+   border-top:1px solid #fff;
 }
 
 a,a:visited {
