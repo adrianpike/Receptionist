@@ -10,17 +10,17 @@
 	    console.log("Got utilization status: " + data);
 		switch(data) {
 			case 'utilizing':
-				$('body').css('background-color','green');
+				$('#name').css('background-color','green');
 				break;
 			case 'not-utilizing':
-				$('body').css('background-color','red');
+				$('#name').css('background-color','red');
 				break;
 		}
 	  });
 	</script>
 <% end %>
 
-<h1><%=@resource.name%></h1>
+<h1 id="name"><%=@resource.name%></h1>
 
 <div id="resource_log">
 </div>
