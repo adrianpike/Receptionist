@@ -1,1 +1,11 @@
 This is Receptionist, the access control and monitoring system for the BIG Idea Lab.
+
+== Realtime dashboards ==
+
+Install orbited & morbid:
+  easy_install orbited
+  easy_install morbid
+
+Start the daemons:
+  orbited --config=config/orbited 
+  morbid

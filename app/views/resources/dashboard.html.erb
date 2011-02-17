@@ -1,0 +1,26 @@
+<% content_for :head do %>
+	<script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" charset="utf-8">
+	  var jug = new Juggernaut;
+	  jug.subscribe('/resources/<%=@resource.id%>/log', function(data){
+	    console.log("Got log: " + data);
+		$('#resource_log').append('<p>' + data + '</p>');
+	  });
+	  jug.subscribe('/resources/<%=@resource.id%>/status', function(data){
+	    console.log("Got utilization status: " + data);
+		switch(data) {
+			case 'utilizing':
+				$('body').css('background-color','green');
+				break;
+			case 'not-utilizing':
+				$('body').css('background-color','red');
+				break;
+		}
+	  });
+	</script>
+<% end %>
+
+<h1><%=@resource.name%></h1>
+
+<div id="resource_log">
+</div>

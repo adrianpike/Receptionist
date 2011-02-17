@@ -16,7 +16,22 @@ class Resource < ActiveRecord::Base
 	end
 	
 	def utilize!(identity = nil)
-		eval(utilization_code) # TODO: sandbox this
+	   # TODO: sandbox this
+	   self.currently_utilizing=true
+	   self.save
+	   
+		eval(utilization_code)
+		Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
+		
+		if (completion_code?) then
+  		sleep utilization_length # FIXME
+  		eval(completion_code)
+  	end
+  	
+  	Juggernaut.publish('/resources/'+self.id.to_s+'/status','not-utilizing')
+  	
+  	 self.currently_utilizing=false
+	   self.save
 	end
 	
 end

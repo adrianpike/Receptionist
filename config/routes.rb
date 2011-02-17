@@ -14,6 +14,7 @@ Receptionist::Application.routes.draw do
   resources :resources do |r|
 		member do
 			get :utilize
+			get :dashboard
 		end
 	end
 

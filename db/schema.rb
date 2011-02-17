@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101013172743) do
+ActiveRecord::Schema.define(:version => 20110217211430) do
 
   create_table "identities", :force => true do |t|
     t.integer  "user_id"
@@ -42,10 +42,13 @@ ActiveRecord::Schema.define(:version => 20101013172743) do
   create_table "resources", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.boolean  "is_guarded",       :default => false
+    t.boolean  "is_guarded",          :default => false
     t.text     "utilization_code"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "utilization_length"
+    t.boolean  "currently_utilizing"
+    t.text     "completion_code"
   end
 
   create_table "users", :force => true do |t|

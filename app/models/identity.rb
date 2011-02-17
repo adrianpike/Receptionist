@@ -7,6 +7,8 @@ class Identity < ActiveRecord::Base
 		self.authorizations_count += 1
 		self.save
 		
+		Juggernaut.publish('/resources/'+resource.id.to_s+'/log','utilized by ' + self.user.to_s)
+	  
 		Utilization.create({
 			:resource => resource,
 			:identity => self

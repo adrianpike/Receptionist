@@ -17,6 +17,10 @@ class ResourcesController < ApplicationController
 		@resource = Resource.find(params[:id])
 	end
 	
+	def dashboard
+	  @resource = Resource.find(params[:id])
+  end
+	
 	def update
 		@resource = Resource.find(params[:id])
 		@resource.update_attributes(params[:resource])
