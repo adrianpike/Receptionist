@@ -2,6 +2,10 @@
 
 <% if @resource.can_utilize?(current_user.identities.first) then %>
 You <strong>can</strong> utilize this resource. <%=link_to 'Utilize it!', utilize_resource_path(@resource)%>
+
+<%=link_to 'Open it.', open_resource_path(@resource) unless @resource.currently_utilizing %>
+<%=link_to 'Close it.', close_resource_path(@resource) if @resource.currently_utilizing %>
+
 <% end %>
 
 <% if current_user.admin then %>

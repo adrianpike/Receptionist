@@ -15,23 +15,23 @@ class Resource < ActiveRecord::Base
 		# need to check if that user has permissions
 	end
 	
-	def utilize!(identity = nil)
-	   # TODO: sandbox this
-	   self.currently_utilizing=true
-	   self.save
+	def utilize!
+	  self.currently_utilizing=true
+	  self.save
 	   
+	   # TODO: sandbox this
 		eval(utilization_code)
 		Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
-		
-		if (completion_code?) then
-  		sleep utilization_length # FIXME
+	end
+	
+	def finish_utilizing!
+	  if (completion_code?) then
   		eval(completion_code)
   	end
   	
   	Juggernaut.publish('/resources/'+self.id.to_s+'/status','not-utilizing')
-  	
-  	 self.currently_utilizing=false
-	   self.save
-	end
+  	self.currently_utilizing=false
+    self.save
+  end
 	
 end

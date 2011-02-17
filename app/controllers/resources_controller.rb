@@ -1,5 +1,7 @@
 class ResourcesController < ApplicationController
-	
+
+  before_filter :authenticate_user!, :except => [:utilize]
+
 	def index
 		@resources = Resource.all
 	end
@@ -27,6 +29,30 @@ class ResourcesController < ApplicationController
 		redirect_to resource_path(@resource)
 	end
 	
+	def open
+	  @identity = current_user.identities.first
+    @resource = Resource.find(params[:id])
+		if @resource and @resource.can_utilize?(@identity) then
+			@identity.utilized_resource!(@resource)
+			@resource.utilize!
+			render :text => 'Utilization approved.'
+		else
+			render :text => 'Unauthorized.'
+		end
+	end
+	
+	def close
+    @identity = current_user.identities.first
+    @resource = Resource.find(params[:id])
+		if @resource and @resource.can_utilize?(@identity) then
+			@identity.utilized_resource!(@resource)
+			@resource.finish_utilizing!
+			render :text => 'Utilization approved.'
+		else
+			render :text => 'Unauthorized.'
+		end
+	end
+	
 	def utilize
 		if params[:key] then
 			@identity = Identity.find(:first, :conditions => ['type = ? and LOWER(data) = ?', params[:type], params[:key].to_s.downcase])
@@ -35,12 +61,14 @@ class ResourcesController < ApplicationController
 		end
 		if @identity then
 			@resource = Resource.find(params[:id])
-			if @resource and @resource.can_utilize?(@identity) then
+			if @resource and @resource.can_utilize?(@identity) and not @resource.currently_utilizing then
 				@identity.utilized_resource!(@resource)
 				@resource.utilize!
+				sleep(@resource.utilization_length || 2)
+				@resource.finish_utilizing!
 				render :text => 'Utilization approved.'
 			else
-				render :text => 'Unauthorized.'
+				render :text => 'Unauthorized or resource busy.'
 			end
 		else
 			render :text => 'No Identity.'

@@ -15,7 +15,8 @@ module Guard
 				if @resource.can_utilize?(identity) then
 					Rails.logger.info("[GUARD] -- Utilization of #{@resource} approved.\n")
 					identity.utilized_resource!(@resource)
-					@resource.utilize!(identity)
+					@resource.utilize!
+					@resource.finish_utilizing!
 				else
 					Rails.logger.info("[GUARD] -- Utilization of #{@resource} *REJECTED* - No permissions.\n")
 					identity.rejected_resource!(@resource)

@@ -1,5 +1,14 @@
 This is Receptionist, the access control and monitoring system for the BIG Idea Lab.
 
+== TODO ==
+
+ - Security check the whole damn beast
+ - Package & document various Guard subsystems
+	- QR reader
+	- pcscd
+ - Package up some example utilization code
+ - Sandbox the utilization space (separate ruby process, downgraded to nobody?)
+
 == Realtime dashboards ==
 
 Install orbited & morbid:

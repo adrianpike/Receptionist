@@ -15,6 +15,9 @@ Receptionist::Application.routes.draw do
 		member do
 			get :utilize
 			get :dashboard
+			
+			get :open
+			get :close
 		end
 	end
 
