@@ -20,8 +20,8 @@ class Resource < ActiveRecord::Base
 	  self.save
 	   
 	   # TODO: sandbox this
+ 		Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
 		eval(utilization_code)
-		Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
 	end
 	
 	def finish_utilizing!
@@ -33,5 +33,10 @@ class Resource < ActiveRecord::Base
   	self.currently_utilizing = false
     self.save
   end
-	
+
+  def names
+    translations = I18n.t('resources')
+    (translations[self.id] || translations[:default])
+  end
+  
 end

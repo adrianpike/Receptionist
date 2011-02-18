@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class User < ActiveRecord::Base
 	has_many :identities
 	belongs_to :organization
@@ -18,4 +20,10 @@ class User < ActiveRecord::Base
 	def to_s
 		name? ? name : email
 	end
+	
+	def gravatar
+    email_address = self.email.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    image_src = "http://www.gravatar.com/avatar/#{hash}"
+  end
 end

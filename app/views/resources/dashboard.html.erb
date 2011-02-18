@@ -10,17 +10,21 @@
 	    console.log("Got utilization status: " + data);
 		switch(data) {
 			case 'utilizing':
-				$('#name').css('background-color','green');
+				$('body').css('background-color','green');
+				$('#dashboard-status').html('<%=@resource.names[:open]%>');
 				break;
 			case 'not-utilizing':
-				$('#name').css('background-color','red');
+				$('body').css('background-color','#EBEBEB');
+				$('#dashboard-status').html('<%=@resource.names[:closed]%>');
 				break;
 		}
 	  });
 	</script>
 <% end %>
 
-<h1 id="name"><%=@resource.name%></h1>
+<h1 id="dashboard-title"><%=@resource.name%></h1>
+
+<h2 id="dashboard-status"><%=@resource.currently_utilizing ? @resource.names[:open] : @resource.names[:closed]%></h2>
 
 <div id="resource_log">
 </div>

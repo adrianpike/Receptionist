@@ -114,3 +114,12 @@ br.clear {
    float:left;
    margin-right:10px;
 }
+
+#dashboard-title {
+	text-align:center;
+}
+
+#dashboard-status {
+	text-align:center;
+	font-size:100px;
+}
