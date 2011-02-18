@@ -45,9 +45,8 @@ class ResourcesController < ApplicationController
     @identity = current_user.identities.first
     @resource = Resource.find(params[:id])
 		if @resource and @resource.can_utilize?(@identity) then
-			@identity.utilized_resource!(@resource)
 			@resource.finish_utilizing!
-			render :text => 'Utilization approved.'
+			render :text => 'Utilization closed.'
 		else
 			render :text => 'Unauthorized.'
 		end

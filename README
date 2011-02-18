@@ -1,5 +1,8 @@
 This is Receptionist, the access control and monitoring system for the BIG Idea Lab.
 
+== INSTALL ==
+All you need is a working Redis server locally.
+
 == TODO ==
 
  - Security check the whole damn beast

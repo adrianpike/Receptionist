@@ -30,7 +30,7 @@ class Resource < ActiveRecord::Base
   	end
   	
   	Juggernaut.publish('/resources/'+self.id.to_s+'/status','not-utilizing')
-  	self.currently_utilizing=false
+  	self.currently_utilizing = false
     self.save
   end
 	
