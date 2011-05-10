@@ -25,7 +25,7 @@ production_slave:
   timeout: 5000
 
 production_master:
-    adapter: sqlite3
+    adapter: mysql2
     database: receptionist
     host: 10.8.0.1
     username: receptionist
@@ -35,7 +35,7 @@ production_master:
 
 
 production_master:
-    adapter: sqlite3
+    adapter: mysql2
     database: receptionist
     host: 10.8.0.1
     username: receptionist
