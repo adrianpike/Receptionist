@@ -25,19 +25,19 @@ production_slave:
   timeout: 5000
 
 production_master:
-    adapter: mysql2
-    database: receptionist
-    host: 10.8.0.1
-    username: receptionist
-    password: receptionist
-    pool: 5
-    timeout: 5000
+  adapter: mysql2
+  database: receptionist
+  host: 10.8.0.1
+  username: receptionist
+  password: receptionist
+  pool: 5
+  timeout: 5000
 
 production:
-    adapter: mysql2
-    database: receptionist
-    host: 10.8.0.1
-    username: receptionist
-    password: receptionist
-    pool: 5
-    timeout: 5000
+  adapter: mysql2
+  database: receptionist
+  host: 10.8.0.1
+  username: receptionist
+  password: receptionist
+  pool: 5
+  timeout: 5000
