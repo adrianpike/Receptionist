@@ -33,8 +33,7 @@ production_master:
     pool: 5
     timeout: 5000
 
-
-production_master:
+production:
     adapter: mysql2
     database: receptionist
     host: 10.8.0.1
