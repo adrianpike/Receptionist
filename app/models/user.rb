@@ -3,6 +3,8 @@ require 'digest/md5'
 class User < ActiveRecord::Base
 	has_many :identities
 	belongs_to :organization
+
+  data_fabric :replicated => true
 	
 	has_many :permissions, :as => :object
 	has_many :resources, :through => :permissions

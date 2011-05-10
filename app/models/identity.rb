@@ -3,6 +3,8 @@ class Identity < ActiveRecord::Base
   
 	validates_presence_of :name
 	
+	data_fabric :replicated => true
+	
 	def utilized_resource!(resource)
 		self.authorizations_count += 1
 		self.save

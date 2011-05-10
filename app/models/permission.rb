@@ -2,6 +2,8 @@ class Permission < ActiveRecord::Base
 	belongs_to :resource
 	belongs_to :object, :polymorphic => true
 
+  data_fabric :replicated => true
+
 	def to_s
 		"#{object_type}##{object_id} - #{resource.name rescue ''}"
 	end

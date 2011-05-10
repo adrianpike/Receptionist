@@ -5,6 +5,8 @@ class Resource < ActiveRecord::Base
 	has_many :organizations, :through => :permissions
 	has_many :users, :through => :permissions
 	
+	data_fabric :replicated => true
+	
 	named_scope :need_guarding, :conditions => {'is_guarded' => true}
 		
 	def can_utilize?(identity)
