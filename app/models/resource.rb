@@ -1,5 +1,4 @@
 class Resource < ActiveRecord::Base
-	
 	has_many :permissions
 	
 	has_many :identities, :through => :permissions
@@ -10,17 +9,16 @@ class Resource < ActiveRecord::Base
 		
 	def can_utilize?(identity)
 		u = identity.user
-		# need to check if a user is in an organization that has permission
-		# need to check if that identity is directly permissioned
-		# need to check if that user has permissions
+		# TODO: need to check if a user is in an organization that has permission
+		# TODO: need to check if that identity is directly permissioned
+		# TODO: need to check if that user has permissions
 	end
 	
 	def utilize!
 	  self.currently_utilizing=true
 	  self.save
 	   
-	   # TODO: sandbox this
- 		Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
+	  Juggernaut.publish('/resources/'+self.id.to_s+'/status','utilizing')
 		eval(utilization_code)
 	end
 	

@@ -1,0 +1,10 @@
+#!/bin/bash
+# Place this in /etc/gTagEventor/generic
+
+if [[ $3 = "IN" ]]
+then
+curl -G -d "key=$2&type=Identity::Touchatag" "http://127.0.0.1/resources/1/utilize"
+else
+   # exit 0 = SUCCESS to show no problem was found
+   exit 0
+fi

@@ -1,18 +1,15 @@
 This is Receptionist, the access control and monitoring system for the BIG Idea Lab.
 
 == INSTALL ==
-All you need is a working Redis server locally.
+You need a working Redis server locally.
 
 == TODO ==
 
  - Security check the whole damn beast
- - Package & document various Guard subsystems
-	- QR reader
-	- pcscd
- - Package up some example utilization code
+ - Package up some example deployments
  - Sandbox the utilization space (separate ruby process, downgraded to nobody?)
 
-== Realtime dashboards ==
+== Realtime dashboards using comet! ==
 
 Install orbited & morbid:
   easy_install orbited
@@ -21,3 +18,7 @@ Install orbited & morbid:
 Start the daemons:
   orbited --config=config/orbited 
   morbid
+
+== Roadmap ==
+
+Master/slaves over potentially unreliable network links.

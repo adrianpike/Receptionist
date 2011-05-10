@@ -1,0 +1,33 @@
+- Receptionist
+	- Rails server.
+	- Central gatekeeper for the whole damn shindig.
+	
+- Node
+	- Contains own execution code.
+	
+	
+node connection:
+ - contacts Server, gives time of last Event
+ - Server begins streaming events since last time
+ - Node executes all events
+
+
+
+
+
+
+
+__ Auth lifecycle __
+auth event -> 'local' node
+if local node == resource node
+	local node utilizes
+end
+local node reliably sends Utilization upstream
+
+__ Remote Auth __
+auth event -> upstream
+upstream sends Utilization to all downstream nodes (unreliably)
+
+__ Database sync __
+Use MySQL master/slave. No, seriously, this makes it easy.
+v3: do it magically.

@@ -15,8 +15,20 @@ test:
   pool: 5
   timeout: 5000
 
-production:
-  adapter: sqlite3
-  database: ../../shared/db/production.sqlite3
+production_slave:
+  adapter: mysql2
+  database: receptionist
+  host: 127.0.0.1
+  username: receptionist
+  password: receptionist
   pool: 5
   timeout: 5000
+
+production_master:
+    adapter: sqlite3
+    database: receptionist
+    host: 10.8.0.1
+    username: receptionist
+    password: receptionist
+    pool: 5
+    timeout: 5000
